@@ -126,15 +126,15 @@ function hexToRGB(hex, alpha) {
   }
 }
 
-function initialiseBody(){
+function initialiseBody() {
   const body = document.querySelector("body");
   body.addEventListener("mousedown", () => {
     drawing = true;
-  })
+  });
 
   body.addEventListener("mouseup", () => {
     drawing = false;
-  })
+  });
 }
 populateWrapper(16);
 initialiseButton();
