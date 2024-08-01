@@ -1,6 +1,6 @@
 let selectedColour = "black";
 let selectedHex;
-
+let drawing = false;
 function populateWrapper(noOfItemsPerRow) {
   const wrapperDiv = document.querySelector("#wrapper");
   wrapperDiv.innerHTML = ""; // ensure no previous divs are in wrapper
@@ -11,50 +11,55 @@ function populateWrapper(noOfItemsPerRow) {
     // ensures that the divs all fit perfectly, as aspect ratio sets width to equal height
     newDiv.style.height = `${100 / noOfItemsPerRow}%`;
     newDiv.style.backgroundColor = "rgba(255, 255, 255, 0)";
-    newDiv.addEventListener("mouseover", () => {
-      let regex = /^rgba.*$/i;
-      // if backgroundColor is rgba as opposed to rgb
-      if (regex.test(newDiv.style.backgroundColor)) {
-        let alphaMatches = newDiv.style.backgroundColor
-          .split(",")[3]
-          .match(/[+-]?\d+(\.\d+)?/g)
-          .join("");
-        // finds the alpha value of the div, and then adds 10% on to it
-        alphaMatches = +alphaMatches + (+alphaMatches < 1 ? 0.1 : 0);
-        switch(selectedColour){
-          case "black":
-            newDiv.style.backgroundColor = `rgba(0, 0, 0, ${alphaMatches})`;
-            break;
-          case "eraser":
-            newDiv.style.backgroundColor = `rgba(255, 255, 255, 0)`
-            break;
-          case "rainbow":
-            newDiv.style.backgroundColor = returnRandomColour() + `${alphaMatches})`;
-            break;
-          case "custom":
-            newDiv.style.backgroundColor = hexToRGB(selectedHex, alphaMatches);
-            break;
-        }
-        
-      } else {
-        // formats the returned value to be rgb instead of rgba -
-        // removes the "a" and replaces last command with a parenthesis
-        switch(selectedColour){
-          case "black":
-            newDiv.style.backgroundColor = `rgb(0, 0, 0)`
-            break;
-          case "eraser":
-            newDiv.style.backgroundColor = `rgba(255, 255, 255, 0)`
-            break;
-          case "rainbow":
-            let tempColor = returnRandomColour().split("");
-            tempColor.pop();
-            tempColor[tempColor.length - 1] = ")";
-            tempColor.splice(3, 1);
-            newDiv.style.backgroundColor = tempColor.join("");
-            break;
-          case "custom":
-            newDiv.style.backgroundColor = hexToRGB(selectedHex);
+    newDiv.addEventListener("mouseover", (e) => {
+      if (drawing) {
+        let regex = /^rgba.*$/i;
+        // if backgroundColor is rgba as opposed to rgb
+        if (regex.test(newDiv.style.backgroundColor)) {
+          let alphaMatches = newDiv.style.backgroundColor
+            .split(",")[3]
+            .match(/[+-]?\d+(\.\d+)?/g)
+            .join("");
+          // finds the alpha value of the div, and then adds 10% on to it
+          alphaMatches = +alphaMatches + (+alphaMatches < 1 ? 0.1 : 0);
+          switch (selectedColour) {
+            case "black":
+              newDiv.style.backgroundColor = `rgba(0, 0, 0, ${alphaMatches})`;
+              break;
+            case "eraser":
+              newDiv.style.backgroundColor = `rgba(255, 255, 255, 0)`;
+              break;
+            case "rainbow":
+              newDiv.style.backgroundColor =
+                returnRandomColour() + `${alphaMatches})`;
+              break;
+            case "custom":
+              newDiv.style.backgroundColor = hexToRGB(
+                selectedHex,
+                alphaMatches
+              );
+              break;
+          }
+        } else {
+          // formats the returned value to be rgb instead of rgba -
+          // removes the "a" and replaces last command with a parenthesis
+          switch (selectedColour) {
+            case "black":
+              newDiv.style.backgroundColor = `rgb(0, 0, 0)`;
+              break;
+            case "eraser":
+              newDiv.style.backgroundColor = `rgba(255, 255, 255, 0)`;
+              break;
+            case "rainbow":
+              let tempColor = returnRandomColour().split("");
+              tempColor.pop();
+              tempColor[tempColor.length - 1] = ")";
+              tempColor.splice(3, 1);
+              newDiv.style.backgroundColor = tempColor.join("");
+              break;
+            case "custom":
+              newDiv.style.backgroundColor = hexToRGB(selectedHex);
+          }
         }
       }
     });
@@ -66,7 +71,7 @@ function initialiseButton() {
   const black = document.querySelector("#black");
   const rainbow = document.querySelector("#rainbow");
   const eraser = document.querySelector("#eraser");
-  const color = document.querySelector("#color")
+  const color = document.querySelector("#color");
 
   button.addEventListener("click", () => {
     inputValue = numInput.value;
@@ -96,7 +101,7 @@ function initialiseButton() {
   });
 
   color.addEventListener("input", () => {
-    selectedColour = "custom"
+    selectedColour = "custom";
     selectedHex = color.value;
   });
 }
@@ -111,16 +116,26 @@ function returnRandomColour() {
 
 function hexToRGB(hex, alpha) {
   let r = parseInt(hex.slice(1, 3), 16),
-      g = parseInt(hex.slice(3, 5), 16),
-      b = parseInt(hex.slice(5, 7), 16);
+    g = parseInt(hex.slice(3, 5), 16),
+    b = parseInt(hex.slice(5, 7), 16);
 
   if (alpha) {
-      return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+    return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
   } else {
-      return "rgb(" + r + ", " + g + ", " + b + ")";
+    return "rgb(" + r + ", " + g + ", " + b + ")";
   }
 }
 
+function initialiseBody(){
+  const body = document.querySelector("body");
+  body.addEventListener("mousedown", () => {
+    drawing = true;
+  })
 
+  body.addEventListener("mouseup", () => {
+    drawing = false;
+  })
+}
 populateWrapper(16);
 initialiseButton();
+initialiseBody();

@@ -51,12 +51,25 @@
   width: 100%;
 }
 
+#input-wrapper {
+    margin-bottom: 16px;
+}
+
+#options-wrapper {
+    margin-top: 16px;
+}
+
+p {
+    margin-top: 8px;
+    font-weight: bolder;
+    font-style: italic;
+}
+
 #meta-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 32px;
   width: 960px;
   height: 100%;
 }
@@ -67,6 +80,17 @@ input {
   padding: 8px 0px 8px 6px;
   width: 96px;
 }
+
+input[type="color"]{
+    border: none;
+    padding: 0;
+    width: 36px;
+    margin-left: 16px;
+    border-radius: 12px;
+    border: 2px black solid;
+    box-shadow: 1px 1px 0px 1px rgb(0, 0, 0);
+}
+
 
 body {
   display: flex;
