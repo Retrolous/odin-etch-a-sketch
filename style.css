@@ -1,113 +1,114 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-
 @keyframes shake {
-    10%, 90% {
-      transform: translate3d(-1px, 0, 0);
-    }
-  
-    20%, 80% {
-      transform: translate3d(2px, 0, 0);
-    }
-  
-    30%, 50%, 70% {
-      transform: translate3d(-4px, 0, 0);
-    }
-  
-    40%, 60% {
-      transform: translate3d(4px, 0, 0);
-    }
-  }
-  
-  .apply-shake {
-      animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
   }
 
-*, *::before, *::after {
-    margin:0;
-    padding:0;
-    font-family: sans-serif;
-    box-sizing: border-box;
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
 
-    font-family: "DM Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: normal;
-    font-style: normal;
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 
-#wrapper {
-    display: flex;
-    height: 75%;
-    aspect-ratio: 1 / 1;
-    flex-wrap: wrap;
-    border-radius: 32px;
-    border: 2px solid black;
-    overflow: hidden
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-family: sans-serif;
+
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
 }
 
-#wrapper > * {
-    flex: 1 1 auto;
-    height: 6.25%;
-    aspect-ratio: 1 / 1;
-    border: 1px black solid;
-
-}
-
-#meta-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 32px;
-    align-items: center;
-    width: 960px;
-    height: 100%;
-  
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-#input-wrapper {
-    justify-content: center;
-    display: flex;
-    gap: 12px;
-    width: 100%;
-}
-
-button {
-    background-color: aliceblue;
-    padding: 4px 12px;
-    color: black;
-    border: 2px solid black;
-    border-radius: 8px;
-    box-shadow: 2px 2px 0px 1px rgb(0,0,0);
-    transition: background-color 0.2s ease;
-}
-
-button.invalid, button:hover.invalid, button:active.invalid {
-    background-color: red;
-    transition: background-color 0.2s ease;
-}
-
-input {
-    border: none;
-    padding: 8px 0px 8px 6px;
-    border-bottom: solid 1px grey;
-    width: 96px;
-}
-
-button:hover {
-    background-color: rgb(214, 222, 230);
-}
-
-button:active {
-    background-color: #ffbf00;
+.apply-shake {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
 .hovered {
-    background-color: black;
+  background-color: black;
+}
+
+#input-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
+#meta-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  width: 960px;
+  height: 100%;
+}
+
+input {
+  border: none;
+  border-bottom: solid 1px grey;
+  padding: 8px 0px 8px 6px;
+  width: 96px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+button {
+  transition: background-color 0.2s ease;
+  box-shadow: 2px 2px 0px 1px rgb(0, 0, 0);
+  border: 2px solid black;
+  border-radius: 8px;
+  background-color: aliceblue;
+  padding: 4px 12px;
+  color: black;
+}
+
+button:active {
+  background-color: #ffbf00;
+}
+
+button:active.invalid {
+  transition: background-color 0.2s ease;
+  background-color: red;
+}
+
+button:hover {
+  background-color: rgb(214, 222, 230);
+}
+
+#wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid black;
+  border-radius: 32px;
+  aspect-ratio: 1 / 1;
+  height: 75%;
+  overflow: hidden;
+}
+
+#wrapper > * {
+  flex: 1 1 auto;
+  border: 1px black solid;
+  aspect-ratio: 1 / 1;
+  height: 6.25%;
 }
