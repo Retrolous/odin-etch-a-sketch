@@ -44,7 +44,7 @@ function populateWrapper(noOfItemsPerRow) {
             newDiv.style.backgroundColor = `rgb(0, 0, 0)`
             break;
           case "eraser":
-            newDiv.style.backgroundColor = `rgb(255, 255, 255)`
+            newDiv.style.backgroundColor = `rgba(255, 255, 255, 0)`
             break;
           case "rainbow":
             let tempColor = returnRandomColour().split("");
