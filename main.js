@@ -1,7 +1,11 @@
 let selectedColour = "black";
 let selectedHex;
 let drawing = false;
+let shadingEnabled = false;
+let mostRecent;
+
 function populateWrapper(noOfItemsPerRow) {
+  mostRecent = noOfItemsPerRow;
   const wrapperDiv = document.querySelector("#wrapper");
   wrapperDiv.innerHTML = ""; // ensure no previous divs are in wrapper
   for (i = 0; i < noOfItemsPerRow ** 2; i++) {
@@ -15,7 +19,7 @@ function populateWrapper(noOfItemsPerRow) {
       if (drawing) {
         let regex = /^rgba.*$/i;
         // if backgroundColor is rgba as opposed to rgb
-        if (regex.test(newDiv.style.backgroundColor)) {
+        if (regex.test(newDiv.style.backgroundColor) && shadingEnabled) {
           let alphaMatches = newDiv.style.backgroundColor
             .split(",")[3]
             .match(/[+-]?\d+(\.\d+)?/g)
@@ -72,6 +76,8 @@ function initialiseButton() {
   const rainbow = document.querySelector("#rainbow");
   const eraser = document.querySelector("#eraser");
   const color = document.querySelector("#color");
+  const shading = document.querySelector("#shading");
+  const reset = document.querySelector("#reset");
 
   button.addEventListener("click", () => {
     inputValue = numInput.value;
@@ -103,6 +109,15 @@ function initialiseButton() {
   color.addEventListener("input", () => {
     selectedColour = "custom";
     selectedHex = color.value;
+  });
+
+  shading.addEventListener("click", () => {
+    shadingEnabled = !shadingEnabled;
+    shading.classList.toggle("enabled");
+  });
+
+  reset.addEventListener("click", () => {
+    populateWrapper(mostRecent);
   });
 }
 

@@ -43,7 +43,7 @@
   background-color: black;
 }
 
-#input-wrapper, 
+#input-wrapper,
 #options-wrapper {
   display: flex;
   justify-content: center;
@@ -52,23 +52,28 @@
 }
 
 #input-wrapper {
-    margin-bottom: 16px;
+  margin-bottom: 8px;
+  padding-top: 12px;
 }
 
 #options-wrapper {
-    margin-top: 16px;
+  margin-top: 16px;
+  padding: 12px 12px 12px 12px;
+  background-color: lightblue;
+  width: fit-content;
+  border-radius: 8px 8px 0 0;
 }
 
 p {
-    margin-top: 8px;
-    font-weight: bolder;
-    font-style: italic;
+  margin-top: 8px;
+  font-weight: bolder;
+  font-style: italic;
 }
 
 #meta-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 960px;
   height: 100%;
@@ -81,16 +86,15 @@ input {
   width: 96px;
 }
 
-input[type="color"]{
-    border: none;
-    padding: 0;
-    width: 36px;
-    margin-left: 16px;
-    border-radius: 12px;
-    border: 2px black solid;
-    box-shadow: 1px 1px 0px 1px rgb(0, 0, 0);
+input[type="color"] {
+  border: none;
+  padding: 0;
+  width: 36px;
+  margin: 0 16px;
+  border-radius: 12px;
+  border: 2px black solid;
+  box-shadow: 1px 1px 0px 1px rgb(0, 0, 0);
 }
-
 
 body {
   display: flex;
@@ -98,6 +102,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: cornsilk;
 }
 
 button {
@@ -115,7 +120,7 @@ button:hover {
 }
 
 button:active {
-    background-color: #ffbf00;
+  background-color: #ffbf00;
 }
 
 button.invalid,
@@ -133,6 +138,7 @@ button:active.invalid {
   aspect-ratio: 1 / 1;
   height: 75%;
   overflow: hidden;
+  background-color: white;
 }
 
 #wrapper > * {
@@ -140,4 +146,12 @@ button:active.invalid {
   border: 1px black solid;
   aspect-ratio: 1 / 1;
   height: 6.25%;
+}
+
+.enabled {
+  background-color: greenyellow;
+}
+
+.enabled:hover {
+  background-color: rgb(130, 195, 33);
 }
