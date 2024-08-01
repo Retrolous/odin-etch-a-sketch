@@ -21,6 +21,12 @@
   }
 }
 
+.apply-shake {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+*,
+*::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
@@ -31,10 +37,6 @@
 
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
-}
-
-.apply-shake {
-  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
 .hovered {
@@ -83,17 +85,19 @@ button {
   color: black;
 }
 
-button:active {
-  background-color: #ffbf00;
+button:hover {
+  background-color: rgb(214, 222, 230);
 }
 
+button:active {
+    background-color: #ffbf00;
+}
+
+button.invalid,
+button:hover.invalid,
 button:active.invalid {
   transition: background-color 0.2s ease;
   background-color: red;
-}
-
-button:hover {
-  background-color: rgb(214, 222, 230);
 }
 
 #wrapper {

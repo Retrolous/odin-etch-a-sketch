@@ -7,6 +7,7 @@ function populateWrapper(noOfItemsPerRow) {
 
     // ensures that the divs all fit perfectly, as aspect ratio sets width to equal height
     newDiv.style.height = `${100 / noOfItemsPerRow}%`;
+    newDiv.style.width = `${100 / noOfItemsPerRow}%`;
     newDiv.style.backgroundColor = "rgba(255, 255, 255, 0)";
     newDiv.addEventListener("mouseover", () => {
       let regex = /^rgba.*$/i;
