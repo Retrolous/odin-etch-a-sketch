@@ -43,10 +43,11 @@
   background-color: black;
 }
 
-#input-wrapper {
+#input-wrapper, 
+#options-wrapper {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 8px;
   width: 100%;
 }
 
