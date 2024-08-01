@@ -55,7 +55,8 @@
 #meta-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 32px;
     align-items: center;
     width: 960px;
     height: 100%;
@@ -84,6 +85,12 @@ button {
     border: 2px solid black;
     border-radius: 8px;
     box-shadow: 2px 2px 0px 1px rgb(0,0,0);
+    transition: background-color 0.2s ease;
+}
+
+button.invalid, button:hover.invalid, button:active.invalid {
+    background-color: red;
+    transition: background-color 0.2s ease;
 }
 
 input {
